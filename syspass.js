@@ -101,13 +101,13 @@ class Dropdown {
     list() {
         const result = this.json.result.result;
         const width = this.field.getBoundingClientRect().width;
+        const left = this.field.getBoundingClientRect().left;
+        const top = this.field.getBoundingClientRect().top + this.field.offsetHeight;
         let list = document.createElement('ul');
 
         list.className = 'myDropdown';
         list.id = this.id;
-        list.style.cssText = "position: absolute; width: " + width + "px; background: #dedede; z-index: 100; padding: 5px 10px; border: 1px solid #000"
-
-        console.log(this.json.result);
+        list.style.cssText = "font-family: arial; position: absolute; top: " + top + "px; left: " + left + "px; width: " + width + "px; background: #dedede; z-index: 100; padding: 5px 10px; border: 1px solid #000"
 
         if(this.json.result.count > 0) {
             result.forEach(element => {
@@ -115,14 +115,14 @@ class Dropdown {
                 list.append(item);
             });
 
-            this.input.after(list);
+            document.body.appendChild(list);
         }
     }
 
     createItem(element) {
         let item = document.createElement('li');
         item.innerText = element.name + ' (' + element.clientName + '/' + element.categoryName + ')';
-        item.style.cssText = "padding: 6px; list-style: none;"
+        item.style.cssText = "padding: 6px; list-style: none; cursor: pointer;"
         item.className = 'syspass-account'
 
         item.addEventListener("click", function () {
