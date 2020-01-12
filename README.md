@@ -1,16 +1,19 @@
-# borderify
+# sysPass Firefox integration
 
-**This add-on injects JavaScript into web pages. The `addons.mozilla.org` domain disallows this operation, so this add-on will not work properly when it's run on pages in the `addons.mozilla.org` domain.**
+Integrates sysPass password manager in Firefox
 
-## What it does
 
-This extension just includes:
 
-* a content script, "borderify.js", that is injected into any pages
-under "mozilla.org/" or any of its subdomains
+## Development
 
-The content script draws a border around the document.body.
+Clone repository:
 
-## What it shows
+```
+git clone git@github.com:ochorocho/syspass-firefox.git
+```
 
-* how to inject content scripts declaratively using manifest.json
+To use [web-ext](https://www.npmjs.com/package/web-ext) to run an instance of Firefox with the addon enabled run the following within the pugins directory:
+
+```
+web-ext run
+```

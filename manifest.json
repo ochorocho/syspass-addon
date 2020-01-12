@@ -1,10 +1,10 @@
 {
 
-  "description": "Add sysPass Browser integration",
+  "description": "Add sysPass Firefox integration",
   "manifest_version": 2,
-  "name": "syspass",
+  "name": "syspass-firefox",
   "version": "1.0",
-  "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/borderify",
+  "homepage_url": "https://github.com/ochorocho/syspass-firefox",
   "icons": {
     "48": "icons/border-48.png"
   },

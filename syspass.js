@@ -1,14 +1,14 @@
 const gettingStoredSettings = browser.storage.local.get();
-let url = tokenSearch = tokenReveal = '';
-let username = '', password = '';
+let url = token = password = '';
+let usernameField = '', passwordField = '';
 
 /**
  * Get addon settings
  */
 gettingStoredSettings.then(function (data) {
     url = data.url;
-    tokenSearch = data.tokenSearch;
-    tokenReveal = data.tokenReveal;
+    token = data.token;
+    password = data.password;
 
     searchAccounts().then(function (data) {
         selectLogin(data);
@@ -31,7 +31,7 @@ function searchAccounts() {
             "jsonrpc": "2.0",
             "method": "account/search",
             "params": {
-                "authToken": tokenSearch,
+                "authToken": token,
                 "text": window.location.host
             },
             "id": 1
@@ -62,8 +62,8 @@ function getAccount(id) {
             "jsonrpc": "2.0",
             "method": "account/viewPass",
             "params": {
-                "authToken": tokenReveal,
-                "tokenPass": "password",
+                "authToken": token,
+                "tokenPass": password,
                 "id": 2,
                 "details": false,
             },
@@ -71,7 +71,7 @@ function getAccount(id) {
         })
     }).then((resp) => resp.json())
         .then(function(data) {
-            password.value = data.result.result.password;
+            passwordField.value = data.result.result.password;
             return data
         })
         .catch(function(e) {
@@ -121,12 +121,12 @@ class Dropdown {
 
     createItem(element) {
         let item = document.createElement('li');
-        item.innerText = element.name;
+        item.innerText = element.name + ' (' + element.clientName + '/' + element.categoryName + ')';
         item.style.cssText = "padding: 6px; list-style: none;"
         item.className = 'syspass-account'
 
         item.addEventListener("click", function () {
-            username.value = element.login;
+            usernameField.value = element.login;
             getAccount(element.id);
         });
 
@@ -154,16 +154,16 @@ function initField(field, data) {
 
 function selectLogin(data) {
     setTimeout(function() {
-        username = document.querySelector('input[name="session[username_or_email]"]')
+        usernameField = document.querySelector('input[name="session[username_or_email]"]')
             || document.querySelector('input[name=username]')
             || document.querySelector('input[name=user]')
             || document.querySelector('input[name="user[login]"]')
             || document.querySelector('input[name="email"]')
             || document.querySelector('input[name="e-mail"]')
             || document.querySelector('input[name="login"]');
-        password = document.querySelector('input[type=password]');
+        passwordField = document.querySelector('input[type=password]');
 
-        initField(username, data);
-        initField(password, data);
+        initField(usernameField, data);
+        initField(passwordField, data);
     }, 100);
 }

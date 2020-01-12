@@ -5,23 +5,23 @@ function storeSettings() {
     return url.value;
   }
 
-  function getTokenSearch() {
-    const tokenSearch = document.querySelector("#token-search");
-    return tokenSearch.value;
+  function getToken() {
+    const token = document.querySelector("#token");
+    return token.value;
   }
 
-  function getTokenReveal() {
-    const tokenReveal = document.querySelector("#token-reveal");
-    return tokenReveal.value;
+  function getPassword() {
+    const password = document.querySelector("#password");
+    return password.value;
   }
 
   const url = getUrl();
-  const tokenSearch = getTokenSearch();
-  const tokenReveal = getTokenReveal();
+  const token = getToken();
+  const password = getPassword();
   browser.storage.local.set({
     url,
-    tokenSearch,
-    tokenReveal
+    token,
+    password
   });
 }
 
@@ -29,11 +29,11 @@ function updateUI(restoredSettings) {
   const url = document.querySelector("#url");
   url.value = restoredSettings.url || '';
 
-  const tokenSearch = document.querySelector('#token-search');
-  tokenSearch.value = restoredSettings.tokenSearch || '';
+  const token = document.querySelector('#token');
+  token.value = restoredSettings.token || '';
 
-  const tokenReveal = document.querySelector('#token-reveal');
-  tokenReveal.value = restoredSettings.tokenReveal || '';
+  const password = document.querySelector('#password');
+  password.value = restoredSettings.password || '';
 }
 
 function onError(e) {
