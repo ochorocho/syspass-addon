@@ -1,0 +1,25 @@
+{
+
+  "description": "Add sysPass Browser integration",
+  "manifest_version": 2,
+  "name": "syspass",
+  "version": "1.0",
+  "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/borderify",
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+  "permissions": [
+    "storage",
+    "*://*/*"
+  ],
+  "options_ui": {
+    "page": "options/options.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["syspass.js"]
+    }
+  ]
+
+}

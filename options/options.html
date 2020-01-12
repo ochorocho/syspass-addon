@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="options.css"/>
+  </head>
+
+  <body>
+
+    <img id="header" src="../icons/header.png">
+
+    <section class="clear-options">
+      <label class="title">sysPass URL
+        <input type="url" name="url" id="url"
+               placeholder="https://example.com"
+               pattern="https://.*" size="30"
+               required>
+      </label>
+    </section>
+
+    <section class="clear-options">
+      <label class="title">API search token
+        <input type="password" name="token-search" id="token-search"
+               size="30"
+               required>
+      </label>
+    </section>
+
+    <section class="clear-options">
+      <label class="title">API show password token
+        <input type="password" name="token-reveal" id="token-reveal"
+               size="30"
+               required>
+      </label>
+    </section>
+
+    <section class="clear-options">
+      <input class="save" type="button" value="Save preferences" id="save-button"/>
+    </section>
+
+    <script src="options.js"></script>
+  </body>
+</html>

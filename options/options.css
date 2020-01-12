@@ -1,0 +1,48 @@
+body {
+  font-family: ;
+  font-size: 0.9em;
+  font-weight: 300;
+  margin-bottom: 2em;
+}
+
+#header {
+  width: 100%;
+  margin-bottom: 2em;
+}
+
+section.clear-options {
+  padding: 0.5em;
+}
+
+#clear-button {
+  margin: 0 1.3em 1em 0;
+}
+
+section.clear-options input,
+section.clear-options>select,
+#clear-button {
+  float: right;
+}
+
+label {
+  display: block;
+  padding: 0;
+}
+
+.title {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+input {
+  font-size: .9em;
+  width: 50%;
+  padding: 0.2em;
+}
+
+input[type="button"] {
+  font-size: 1.5em;
+  border: 1px solid #5c6bc0;
+  background: #5c6bc0;
+  color: #ffffff;
+}
