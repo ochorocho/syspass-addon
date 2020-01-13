@@ -46,3 +46,24 @@ input[type="button"] {
   background: #5c6bc0;
   color: #ffffff;
 }
+
+#msg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+}
+
+.success, .error {
+  width: 50%;
+  padding: 10px;
+  background: #4e9b58;
+  margin: auto;
+  color: #ffffff;
+}
+
+.error {
+  background: #9b231d;
+}

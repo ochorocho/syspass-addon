@@ -64,7 +64,7 @@ function getAccount(id) {
             "params": {
                 "authToken": token,
                 "tokenPass": password,
-                "id": 2,
+                "id": id,
                 "details": false,
             },
             "id": 1

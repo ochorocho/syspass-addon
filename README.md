@@ -2,7 +2,20 @@
 
 Integrates sysPass password manager in Firefox
 
+Addon page: https://addons.mozilla.org/de/firefox/addon/syspass/
 
+![syspass firefox integration](preview.gif "Logo Title Text 1")
+
+## Configuration
+
+In sysPass go to `User and Accesses -> Api Authorizations` and add permissions for
+
+* "Search for Accounts"
+* "View password"
+
+:warning: Both have to have the same password
+
+In Firefox go to the Addons page (cmd+shift+A / `about:addons`) and edit sysPass Addon settings. Add URL (https required), API token and API password. 
 
 ## Development
 
