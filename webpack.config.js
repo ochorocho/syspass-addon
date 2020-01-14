@@ -8,7 +8,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "index.js"
+        filename: "syspass.js"
     },
     watchOptions: {
         ignored: ['dist', 'node_modules']

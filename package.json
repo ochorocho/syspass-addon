@@ -1,10 +1,10 @@
 {
-  "name": "webpack-webextension",
+  "name": "syspass-firefox",
   "version": "1.0.0",
-  "description": "A minimal example of how to use npm modules from within a WebExtension.",
+  "description": "syspass-firefox",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node_modules/.bin/webpack && node_modules/.bin/web-ext build --source-dir=dist",
+    "build": "node_modules/.bin/webpack && rm -Rf web-ext-artifacts/* && node_modules/.bin/web-ext build --source-dir=dist",
     "watch": "node_modules/.bin/webpack --watch",
     "dev": "node_modules/.bin/web-ext run --source-dir=dist & node_modules/.bin/webpack --watch"
   },
@@ -15,6 +15,7 @@
     "webpack-cli": "^3.2.3"
   },
   "dependencies": {
+    "autocompleter": "^6.0.1",
     "web-ext": "^4.0.0"
   }
 }
