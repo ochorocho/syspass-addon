@@ -1,0 +1,20 @@
+{
+  "name": "webpack-webextension",
+  "version": "1.0.0",
+  "description": "A minimal example of how to use npm modules from within a WebExtension.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node_modules/.bin/webpack && node_modules/.bin/web-ext build --source-dir=dist",
+    "watch": "node_modules/.bin/webpack --watch",
+    "dev": "node_modules/.bin/web-ext run --source-dir=dist & node_modules/.bin/webpack --watch"
+  },
+  "license": "MPL-2.0",
+  "devDependencies": {
+    "copy-webpack-plugin": "^5.1.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
+  },
+  "dependencies": {
+    "web-ext": "^4.0.0"
+  }
+}
