@@ -126,7 +126,10 @@ class Dropdown {
         item.className = 'syspass-account'
 
         item.addEventListener("click", function () {
-            usernameField.value = element.login;
+            if(usernameField !== undefined) {
+                usernameField.value = element.login;
+            }
+
             getAccount(element.id);
         });
 
@@ -154,16 +157,13 @@ function initField(field, data) {
 
 function selectLogin(data) {
     setTimeout(function() {
-        usernameField = document.querySelector('input[name="session[username_or_email]"]')
-            || document.querySelector('input[name=username]')
-            || document.querySelector('input[name=user]')
-            || document.querySelector('input[name="user[login]"]')
-            || document.querySelector('input[name="email"]')
-            || document.querySelector('input[name="e-mail"]')
-            || document.querySelector('input[name="login"]');
         passwordField = document.querySelector('input[type=password]');
+        usernameField = passwordField.closest('form').querySelectorAll('input[type="text"]')[0];
 
-        initField(usernameField, data);
+        if(usernameField !== undefined) {
+            initField(usernameField, data);
+        }
+
         initField(passwordField, data);
     }, 100);
 }
