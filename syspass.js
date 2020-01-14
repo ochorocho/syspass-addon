@@ -161,9 +161,13 @@ function selectLogin(data) {
         usernameField = passwordField.closest('form').querySelectorAll('input[type="text"]')[0];
 
         if(usernameField !== undefined) {
+            usernameField.setAttribute('autocomplete', 'off')
             initField(usernameField, data);
         }
 
-        initField(passwordField, data);
+        if(passwordField !== undefined) {
+            passwordField.setAttribute('autocomplete', 'off')
+            initField(passwordField, data);
+        }
     }, 100);
 }
