@@ -49,16 +49,8 @@ function storeSettings() {
     const password = getPassword();
 
     if (isURL(url) && token !== '' && token !== '') {
-        browser.storage.local.set({
-            url,
-            token,
-            password
-        });
-
-        message('Preferences saved', 'success');
+        checkApi(url, token, password);
     } else {
-        console.log('ööööööööö');
-
         message('Oops, could not save preferences', 'error');
     }
 }
@@ -77,6 +69,38 @@ function updateUI(restoredSettings) {
 function onError(e) {
     console.error(e);
 }
+
+function checkApi(url, token, password) {
+    return fetch(url + '/api.php', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "jsonrpc": "2.0",
+            "method": "account/search",
+            "params": {
+                "authToken": token,
+                "text": ""
+            },
+            "id": 1
+        })
+    }).then((resp) => resp.json())
+        .then(function(data) {
+            browser.storage.local.set({
+                url,
+                token,
+                password
+            });
+
+            message("Preferences saved.\n SysPass connection established", 'success');
+        })
+        .catch(function(e) {
+            message("Could not connect to sysPass", 'error');
+        });
+}
+
 
 const gettingStoredSettings = browser.storage.local.get();
 gettingStoredSettings.then(updateUI, onError);
