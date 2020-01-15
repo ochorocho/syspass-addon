@@ -35,9 +35,12 @@ function searchAccounts() {
  * @returns {Promise<any>}
  */
 function getAccount(id) {
+    spinner();
+
     return apiRequest('POST', 'account/viewPass', { "tokenPass": password, "id": id})
         .then(function (data) {
             passwordField.value = data.result.result.password;
+            document.getElementById('syspass-spinner').remove();
 
             return data
         });
@@ -76,10 +79,12 @@ function selectLogin(data) {
         usernameField = passwordField.closest('form').querySelectorAll('input[type="text"]')[0];
 
         if (usernameField !== undefined) {
+            usernameField.setAttribute('autocomplete', 'off');
             autocompleteField(usernameField, list);
         }
 
         if (passwordField !== undefined) {
+            passwordField.setAttribute('autocomplete', 'off');
             autocompleteField(passwordField, list);
         }
     }, 100);
@@ -127,4 +132,19 @@ function apiRequest(method, apiMethod, params) {
     }).then((resp) => resp.json()).catch(function (e) {
         console.log(e);
     });
+}
+
+function spinner() {
+    let spinnerHtml = document.createElement('div');
+    let pw = passwordField.getBoundingClientRect();
+    let top = pw.height - ( pw.height * 0.9 );
+
+    spinnerHtml.innerHTML = '<div id="syspass-spinner" class="syspass-spinner"></div>';
+    spinnerHtml.style.cssText = "position: absolute; z-index: 1000";
+    spinnerHtml.style.top = ( pw.top + top / 2 ) + "px";
+    spinnerHtml.style.left = ( pw.left - pw.height + pw.width ) + "px";
+    spinnerHtml.style.height = ( pw.height * 0.9 ) + "px";
+    spinnerHtml.style.width = ( pw.height * 0.9 ) + "px";
+
+    document.body.appendChild(spinnerHtml);
 }
