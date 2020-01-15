@@ -2,7 +2,7 @@
   "description": "Add sysPass Firefox integration",
   "manifest_version": 2,
   "name": "syspass",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "homepage_url": "https://github.com/ochorocho/syspass-firefox",
   "icons": {
     "48": "icons/border-48.png"
