@@ -1,6 +1,7 @@
+import autocomplete from "autocompleter/autocomplete.js";
+
 const gettingStoredSettings = browser.storage.local.get();
-let url = token = password = '';
-let usernameField = '', passwordField = '';
+let url = '', token = '', password = '', usernameField = '', passwordField = '';
 
 /**
  * Get addon settings
@@ -21,153 +22,109 @@ gettingStoredSettings.then(function (data) {
  * @returns {Promise<any>}
  */
 function searchAccounts() {
-    return fetch(url + '/api.php', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "jsonrpc": "2.0",
-            "method": "account/search",
-            "params": {
-                "authToken": token,
-                "text": window.location.host
-            },
-            "id": 1
-        })
-    }).then((resp) => resp.json())
-        .then(function(data) {
+    return apiRequest('POST', 'account/search', { "text": window.location.host })
+        .then(function (data) {
             return data
-        })
-        .catch(function(e) {
-            console.log(e);
         });
 }
 
 /**
- *
+ * Search for accounts based on given URL
  *
  * @param id
  * @returns {Promise<any>}
  */
 function getAccount(id) {
+    return apiRequest('POST', 'account/viewPass', { "tokenPass": password, "id": id})
+        .then(function (data) {
+            passwordField.value = data.result.result.password;
+
+            return data
+        });
+}
+
+/**
+ * Apply autocomplete
+ *
+ * @param field
+ * @param data
+ */
+function autocompleteField(field, data) {
+    autocomplete({
+        input: field,
+        showOnFocus: true,
+        fetch: function (text, update) {
+            update(data);
+        },
+        onSelect: function (item) {
+            usernameField.value = item.value;
+            getAccount(item.id)
+        }
+    });
+}
+
+/**
+ * Select login fields: username, password
+ *
+ * @param data
+ */
+function selectLogin(data) {
+    setTimeout(function () {
+        let list = processList(data);
+
+        passwordField = document.querySelector('input[type=password]');
+        usernameField = passwordField.closest('form').querySelectorAll('input[type="text"]')[0];
+
+        if (usernameField !== undefined) {
+            autocompleteField(usernameField, list);
+        }
+
+        if (passwordField !== undefined) {
+            autocompleteField(passwordField, list);
+        }
+    }, 100);
+}
+
+/**
+ * Transform results into a autocompleter readable format
+ *
+ * @param data
+ * @returns {[]}
+ */
+function processList(data) {
+    let list = [];
+    data.result.result.forEach(function (item) {
+        let login = item.login ? ` ( ${item.login} )` : '';
+        list.push({label: item.name + login, value: item.login, id: item.id});
+    });
+
+    return list;
+}
+
+/**
+ * Generic API Request
+ *
+ * @param method
+ * @param apiMethod
+ * @param params
+ * @returns {Promise<any>}
+ */
+function apiRequest(method, apiMethod, params) {
+    let requestParams = Object.assign({ "authToken": token }, params);
+
     return fetch(url + '/api.php', {
-        method: 'POST',
+        method: method,
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             "jsonrpc": "2.0",
-            "method": "account/viewPass",
-            "params": {
-                "authToken": token,
-                "tokenPass": password,
-                "id": id,
-                "details": false,
-            },
+            "method": apiMethod,
+            "params": requestParams,
             "id": 1
         })
-    }).then((resp) => resp.json())
-        .then(function(data) {
-            passwordField.value = data.result.result.password;
-            return data
-        })
-        .catch(function(e) {
-            console.log(e);
-        });
-}
-
-/**
- * Create dropdown
- */
-class Dropdown {
-    constructor(input, json) {
-        this.input = input;
-        this.json = json;
-        this.id = Math.random().toString(36).substr(2, 9);
-        this.list();
-    }
-
-    get data() {
-        return this.json;
-    }
-
-    get field() {
-        return this.input;
-    }
-
-    list() {
-        const result = this.json.result.result;
-        const width = this.field.getBoundingClientRect().width;
-        const left = this.field.getBoundingClientRect().left;
-        const top = this.field.getBoundingClientRect().top + this.field.offsetHeight;
-        let list = document.createElement('ul');
-
-        list.className = 'myDropdown';
-        list.id = this.id;
-        list.style.cssText = "font-family: arial; position: absolute; top: " + top + "px; left: " + left + "px; width: " + width + "px; background: #dedede; z-index: 100; padding: 5px 10px; border: 1px solid #000"
-
-        if(this.json.result.count > 0) {
-            result.forEach(element => {
-                let item = this.createItem(element);
-                list.append(item);
-            });
-
-            document.body.appendChild(list);
-        }
-    }
-
-    createItem(element) {
-        let item = document.createElement('li');
-        item.innerText = element.name + ' (' + element.clientName + '/' + element.categoryName + ')';
-        item.style.cssText = "padding: 6px; list-style: none; cursor: pointer;"
-        item.className = 'syspass-account'
-
-        item.addEventListener("click", function () {
-            if(usernameField !== undefined) {
-                usernameField.value = element.login;
-            }
-
-            getAccount(element.id);
-        });
-
-        return item;
-    }
-
-    destroy() {
-        document.getElementById(this.id).remove();
-    }
-}
-
-function initField(field, data) {
-    let dropdown = false;
-
-    field.addEventListener("focus", function () {
-        dropdown = new Dropdown(field, data);
+    }).then((resp) => resp.json()).catch(function (e) {
+        console.log(e);
     });
-
-    field.addEventListener("focusout", function () {
-        setTimeout(function () {
-            dropdown.destroy();
-        }, 200);
-    });
-}
-
-function selectLogin(data) {
-    setTimeout(function() {
-        passwordField = document.querySelector('input[type=password]');
-        usernameField = passwordField.closest('form').querySelectorAll('input[type="text"]')[0];
-
-        if(usernameField !== undefined) {
-            usernameField.setAttribute('autocomplete', 'off')
-            initField(usernameField, data);
-        }
-
-        if(passwordField !== undefined) {
-            passwordField.setAttribute('autocomplete', 'off')
-            initField(passwordField, data);
-        }
-    }, 100);
 }

@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "autocompleter": "^6.0.1",
-    "web-ext": "^4.0.0"
+    "web-ext": "^4.0.0",
+    "webpack-concat-plugin": "3.0.0"
   }
 }

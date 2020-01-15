@@ -17,7 +17,8 @@
   "content_scripts": [
     {
       "matches": ["*://*/*"],
-      "js": ["syspass.js"]
+      "js": ["syspass.js"],
+      "css": ["syspass.css"]
     }
   ]
 
