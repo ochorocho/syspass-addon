@@ -1,50 +1,16 @@
 import autocomplete from "autocompleter/autocomplete.js";
 
 const gettingStoredSettings = browser.storage.local.get();
-let url = '', token = '', password = '', usernameField = '', passwordField = '';
+let settings, usernameField = '', passwordField = '';
 
 /**
  * Get addon settings
  */
 gettingStoredSettings.then(function (data) {
-    url = data.url;
-    token = data.token;
-    password = data.password;
-
-    searchAccounts().then(function (data) {
-        selectLogin(data);
-    });
+    let settingsSearch = Object.assign({ "method": 'account/search' }, data);
+    settings = data;
+    chrome.runtime.sendMessage({contentScriptQuery: "accountSearch", text: window.location.host, settings: settingsSearch}, data => selectLogin(data));
 });
-
-/**
- * Search accounts according to given URL
- *
- * @returns {Promise<any>}
- */
-function searchAccounts() {
-    return apiRequest('POST', 'account/search', { "text": window.location.host })
-        .then(function (data) {
-            return data
-        });
-}
-
-/**
- * Search for accounts based on given URL
- *
- * @param id
- * @returns {Promise<any>}
- */
-function getAccount(id) {
-    spinner();
-
-    return apiRequest('POST', 'account/viewPass', { "tokenPass": password, "id": id})
-        .then(function (data) {
-            passwordField.value = data.result.result.password;
-            document.getElementById('syspass-spinner').remove();
-
-            return data
-        });
-}
 
 /**
  * Apply autocomplete
@@ -61,7 +27,12 @@ function autocompleteField(field, data) {
         },
         onSelect: function (item) {
             usernameField.value = item.value;
-            getAccount(item.id)
+            spinner();
+            let settingsPassword = Object.assign({ "method": 'account/viewPass', id: item.id }, settings);
+            chrome.runtime.sendMessage({contentScriptQuery: "getPassword", settings: settingsPassword}, data => {
+                passwordField.value = data.result.result.password
+                document.getElementById('syspass-spinner').remove();
+            });
         }
     });
 }
@@ -107,33 +78,8 @@ function processList(data) {
 }
 
 /**
- * Generic API Request
- *
- * @param method
- * @param apiMethod
- * @param params
- * @returns {Promise<any>}
+ * Loading indicator
  */
-function apiRequest(method, apiMethod, params) {
-    let requestParams = Object.assign({ "authToken": token }, params);
-
-    return fetch(url + '/api.php', {
-        method: method,
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "jsonrpc": "2.0",
-            "method": apiMethod,
-            "params": requestParams,
-            "id": 1
-        })
-    }).then((resp) => resp.json()).catch(function (e) {
-        console.log(e);
-    });
-}
-
 function spinner() {
     let spinnerHtml = document.createElement('div');
     let pw = passwordField.getBoundingClientRect();
