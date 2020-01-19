@@ -1,5 +1,5 @@
 {
-  "description": "Add sysPass Firefox integration",
+  "description": "Add sysPass integration",
   "manifest_version": 2,
   "name": "syspass",
   "version": "1.4.0",
