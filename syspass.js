@@ -22,6 +22,7 @@ function autocompleteField(field, data) {
     autocomplete({
         input: field,
         showOnFocus: true,
+        className: 'syspass-autocomplete',
         fetch: function (text, update) {
             update(data);
         },
