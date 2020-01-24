@@ -1,11 +1,13 @@
 const path = require("path");
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     mode: 'development',
     entry: {
-        syspass: "./syspass.js",
-        background: "./background.js"
+        "syspass": "./javascript/syspass.js",
+        "background": "./javascript/background.js",
+        "options": "./javascript/options.js",
     },
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -17,7 +19,35 @@ module.exports = {
     plugins: [
         new CopyWebpackPlugin([
             {from: 'addon', to: './'},
-            {from: 'node_modules/webextension-polyfill/dist/browser-polyfill.js', to: './browser-polyfill.js'}
+            {from: 'node_modules/webextension-polyfill/dist/browser-polyfill.js', to: './polyfill.js'}
         ]),
-    ]
+    ],
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                extractComments: false
+            })
+        ],
+    },
+    module: {
+        rules: [
+            {
+                test: /.scss$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].css',
+                            outputPath: './'
+                        }
+                    },
+                    { loader: 'extract-loader' },
+                    { loader: 'css-loader' },
+                    { loader: 'postcss-loader' },
+                    { loader: 'sass-loader' }
+                ]
+            }
+        ]
+    },
 };

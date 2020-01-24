@@ -1,3 +1,4 @@
+import "../scss/syspass.scss"
 import autocomplete from "autocompleter/autocomplete.js";
 
 const gettingStoredSettings = browser.storage.local.get();
