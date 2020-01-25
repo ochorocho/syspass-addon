@@ -1,3 +1,6 @@
+@import "general/variables";
+@import "general/mixins";
+
 /**
     Autocomplete
  */
@@ -8,48 +11,29 @@
     overflow: auto;
     box-sizing: border-box;
     border: 1px solid rgba(50, 50, 50, 0.6);
-}
 
-.syspass-autocomplete * {
-    font: inherit;
-}
+    * {
+        font: inherit;
+    }
 
-.syspass-autocomplete > div {
-    padding: 0 4px;
-}
+    & > div {
+        padding: 0 4px;
+    }
 
-.syspass-autocomplete .group {
-    background: #eee;
-}
+    .group {
+        background: #eee;
+    }
 
-.syspass-autocomplete > div:hover:not(.group),
-.syspass-autocomplete > div.selected {
-    background: #81ca91;
-    cursor: pointer;
-}
+    & > div:hover:not(.group), & > div.selected {
+        background: #81ca91;
+        cursor: pointer;
+    }
 
-.syspass-autocomplete > div:hover:not(.group) {
-    background: rgba(129,202,145,0.5);
+    & > div:hover:not(.group) {
+        background: rgba(129,202,145,0.5);
+    }
 }
-
-/**
-    Spinner
- */
 
 .syspass-spinner {
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-    border: 3px solid #dedede;
-    border-radius: 50%;
-    border-top-color: #999999;
-    animation: spin 1s ease-in-out infinite;
-    -webkit-animation: spin 1s ease-in-out infinite;
-}
-
-@keyframes spin {
-    to { -webkit-transform: rotate(360deg); }
-}
-@-webkit-keyframes spin {
-    to { -webkit-transform: rotate(360deg); }
+    @include spinner($success, $error);
 }

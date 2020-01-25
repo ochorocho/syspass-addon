@@ -17,3 +17,24 @@
     }
   }
 }
+
+@mixin spinner($color: $spinnerColor, $background: $spinnerBackground) {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border: 3px solid $background;
+  border-radius: 50%;
+  border-top-color: $color;
+  animation: spin 1s ease-in-out infinite;
+
+  @keyframes spin {
+    to {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes spin {
+    to {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+}
