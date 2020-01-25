@@ -1,0 +1,27 @@
+@import "general/variables";
+@import "general/mixins";
+
+body {
+  @include mode();
+
+  font-size: 0.9em;
+  font-weight: 300;
+  margin: 0 0 40px;
+}
+
+%box {
+  width: 50%;
+  padding: 10px;
+  background: $success;
+  margin: auto;
+  color: $white;
+}
+
+.success {
+  @extend %box
+}
+
+.error {
+  @extend %box;
+  background: $error;
+}

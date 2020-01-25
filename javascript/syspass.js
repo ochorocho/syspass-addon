@@ -4,6 +4,8 @@ import autocomplete from "autocompleter/autocomplete.js";
 const gettingStoredSettings = browser.storage.local.get();
 let settings, usernameField = '', passwordField = '';
 
+var currentBookmark;
+
 /**
  * Get addon settings
  */

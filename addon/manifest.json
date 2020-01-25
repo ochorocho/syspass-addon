@@ -24,6 +24,15 @@
       "js": ["polyfill.js", "syspass.js"],
       "css": ["syspass.css"]
     }
-  ]
-
+  ],
+  "browser_action": {
+    "default_icon": "icons/border-48.png",
+    "theme_icons": [{
+      "light": "icons/border-48.png",
+      "dark": "icons/border-48.png",
+      "size": 32
+    }],
+    "default_title": "sysPass",
+    "default_popup": "popup.html"
+  }
 }

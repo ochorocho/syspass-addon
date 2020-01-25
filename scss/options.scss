@@ -1,9 +1,14 @@
-$purple: #5c6bc0;
-$white: #ffffff;
-$success: #4e9b58;
-$error: #9b231d;
+@import "general/variables";
+@import "general/mixins";
+
+@mixin font {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Ubuntu', 'Helvetica Neue', sans-serif
+}
 
 body {
+  @include mode();
+  @include font;
+
   font-size: 0.9em;
   font-weight: 300;
   margin: 0 0 40px;
@@ -23,6 +28,9 @@ label {
   padding: 0.5em;
 
   input {
+    @include mode(true);
+    @include font;
+
     font-size: .9em;
     width: 50%;
     padding: 0.2em;

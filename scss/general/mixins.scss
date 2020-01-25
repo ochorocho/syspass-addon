@@ -1,0 +1,19 @@
+@import "variables";
+
+@mixin mode($border: false) {
+  background: $lightMenu;
+  color: $lightText;
+
+  @if $border {
+    border: 1px solid $lightBorder;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background: $darkMenu;
+    color: $darkText;
+
+    @if $border {
+      border: 1px solid $darkBorder;
+    }
+  }
+}

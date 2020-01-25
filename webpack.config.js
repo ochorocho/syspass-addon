@@ -8,6 +8,7 @@ module.exports = {
         "syspass": "./javascript/syspass.js",
         "background": "./javascript/background.js",
         "options": "./javascript/options.js",
+        "popup": "./javascript/popup.js",
     },
     output: {
         path: path.resolve(__dirname, "dist"),
