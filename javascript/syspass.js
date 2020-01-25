@@ -27,7 +27,8 @@ function autocompleteField(field, data) {
         className: 'syspass-autocomplete',
         disableAutoSelect: true,
         fetch: function (text, update) {
-            update(data);
+            let suggestions = data.filter(n => n.label.toLowerCase().startsWith(text.toLowerCase()))
+            update(suggestions);
         },
         onSelect: function (item) {
             usernameField.value = item.value;
@@ -36,19 +37,6 @@ function autocompleteField(field, data) {
             chrome.runtime.sendMessage({contentScriptQuery: "getPassword", settings: settingsPassword}, data => {
                 passwordField.value = data.result.result.password
                 document.getElementById('syspass-spinner').remove();
-            });
-        },
-        customize: function(input, inputRect, container, maxHeight) {
-            input.addEventListener("keydown", event => {
-                if(event.code !== 'ArrowUp' && event.code !== 'ArrowDown') {
-                    container.style.display = 'none';
-                }
-            });
-
-            input.addEventListener("focus", event => {
-                if(event.code !== 'ArrowUp' && event.code !== 'ArrowDown') {
-                    container.style.display = 'block';
-                }
             });
         },
     });
