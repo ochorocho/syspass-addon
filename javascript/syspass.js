@@ -18,12 +18,14 @@ gettingStoredSettings.then(function (data) {
  *
  * @param field
  * @param data
+ * @returns {*|AutocompleteResult}
  */
 function autocompleteField(field, data) {
     autocomplete({
         input: field,
         showOnFocus: true,
         className: 'syspass-autocomplete',
+        disableAutoSelect: true,
         fetch: function (text, update) {
             update(data);
         },
@@ -35,8 +37,23 @@ function autocompleteField(field, data) {
                 passwordField.value = data.result.result.password
                 document.getElementById('syspass-spinner').remove();
             });
-        }
+        },
+        customize: function(input, inputRect, container, maxHeight) {
+            input.addEventListener("keydown", event => {
+                if(event.code !== 'ArrowUp' && event.code !== 'ArrowDown') {
+                    container.style.display = 'none';
+                }
+            });
+
+            input.addEventListener("focus", event => {
+                if(event.code !== 'ArrowUp' && event.code !== 'ArrowDown') {
+                    container.style.display = 'block';
+                }
+            });
+        },
     });
+
+    return autocomplete;
 }
 
 /**
