@@ -4,8 +4,6 @@ import autocomplete from "autocompleter/autocomplete.js";
 const gettingStoredSettings = browser.storage.local.get();
 let settings, usernameField = '', passwordField = '';
 
-var currentBookmark;
-
 /**
  * Get addon settings
  */
@@ -13,6 +11,26 @@ gettingStoredSettings.then(function (data) {
     let settingsSearch = Object.assign({ "method": 'account/search' }, data);
     settings = data;
     chrome.runtime.sendMessage({contentScriptQuery: "accountSearch", text: window.location.host, settings: settingsSearch}, data => selectLogin(data));
+});
+
+browser.runtime.onMessage.addListener(request => {
+    if(request.command === 'fillOutForm') {
+        let form = passwordField.closest('form');
+        let password = document.querySelector('input[type=password]');
+        let username = form.querySelectorAll('input[type="text"]')[0];
+        username.value = request.login;
+
+        spinner();
+        let settingsPassword = Object.assign({ "method": 'account/viewPass', id: request.id }, settings);
+        chrome.runtime.sendMessage({contentScriptQuery: "getPassword", settings: settingsPassword}, data => {
+            password.value = data.result.result.password;
+            document.getElementById('syspass-spinner').remove();
+        });
+
+
+
+    }
+    return Promise.resolve({response: "Login set ..."});
 });
 
 /**

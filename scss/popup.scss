@@ -3,11 +3,30 @@
 
 body {
   @include mode();
+  @include font;
 
   font-size: 0.9em;
   font-weight: 300;
-  margin: 0 0 40px;
+  margin: 0;
 }
+
+.popup-list {
+  padding: 10px 0 20px;
+  max-height: 50%;
+  overflow-y: auto;
+
+  &__item {
+    @include mode($link: true);
+
+    display: block;
+    padding: 5px 20px;
+    text-decoration: none;
+  }
+}
+
+
+
+
 
 %box {
   width: 50%;

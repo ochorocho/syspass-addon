@@ -49,10 +49,3 @@ chrome.runtime.onMessage.addListener(
             return true;
         }
     });
-
-/*
- * Add or remove the bookmark on the current page.
- */
-browser.browserAction.onClicked.addListener(function () {
-    console.log('##############');
-});

@@ -9,7 +9,8 @@
   },
   "permissions": [
     "storage",
-    "*://*/*"
+    "*://*/*",
+    "tabs"
   ],
   "options_ui": {
     "page": "options.html"

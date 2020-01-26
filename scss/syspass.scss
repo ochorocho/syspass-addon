@@ -35,5 +35,5 @@
 }
 
 .syspass-spinner {
-    @include spinner($success, $error);
+    @include spinner;
 }
