@@ -73,7 +73,7 @@ function selectLogin(data) {
         passwordField = document.querySelector('input[type=password]');
         usernameField = passwordField.closest('form').querySelectorAll('input[type="text"]')[0];
 
-        if (settings.dropdown === false) {
+        if (settings.dropdown !== true) {
             if (usernameField !== undefined) {
                 usernameField.setAttribute('autocomplete', 'off');
                 autocompleteField(usernameField, list);
