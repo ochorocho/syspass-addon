@@ -8,29 +8,26 @@ let settings, usernameField = '', passwordField = '';
  * Get addon settings
  */
 gettingStoredSettings.then(function (data) {
-    let settingsSearch = Object.assign({ "method": 'account/search' }, data);
+    let settingsSearch = Object.assign({"method": 'account/search'}, data);
     settings = data;
-    chrome.runtime.sendMessage({contentScriptQuery: "accountSearch", text: window.location.host, settings: settingsSearch}, data => selectLogin(data));
+    chrome.runtime.sendMessage({
+        contentScriptQuery: "accountSearch",
+        text: window.location.host,
+        settings: settingsSearch
+    }, data => selectLogin(data));
 });
 
 browser.runtime.onMessage.addListener(request => {
-    if(request.command === 'fillOutForm') {
-        let form = passwordField.closest('form');
-        let password = document.querySelector('input[type=password]');
-        let username = form.querySelectorAll('input[type="text"]')[0];
-        username.value = request.login;
+    if (request.command === 'fillOutForm') {
+        usernameField.value = `${request.login}`;
 
         spinner();
-        let settingsPassword = Object.assign({ "method": 'account/viewPass', id: request.id }, settings);
+        let settingsPassword = Object.assign({"method": 'account/viewPass', id: request.id}, settings);
         chrome.runtime.sendMessage({contentScriptQuery: "getPassword", settings: settingsPassword}, data => {
-            password.value = data.result.result.password;
+            passwordField.value = data.result.result.password;
             document.getElementById('syspass-spinner').remove();
         });
-
-
-
     }
-    return Promise.resolve({response: "Login set ..."});
 });
 
 /**
@@ -53,7 +50,7 @@ function autocompleteField(field, data) {
         onSelect: function (item) {
             usernameField.value = item.value;
             spinner();
-            let settingsPassword = Object.assign({ "method": 'account/viewPass', id: item.id }, settings);
+            let settingsPassword = Object.assign({"method": 'account/viewPass', id: item.id}, settings);
             chrome.runtime.sendMessage({contentScriptQuery: "getPassword", settings: settingsPassword}, data => {
                 passwordField.value = data.result.result.password
                 document.getElementById('syspass-spinner').remove();
@@ -76,14 +73,16 @@ function selectLogin(data) {
         passwordField = document.querySelector('input[type=password]');
         usernameField = passwordField.closest('form').querySelectorAll('input[type="text"]')[0];
 
-        if (usernameField !== undefined) {
-            usernameField.setAttribute('autocomplete', 'off');
-            autocompleteField(usernameField, list);
-        }
+        if (settings.dropdown === false) {
+            if (usernameField !== undefined) {
+                usernameField.setAttribute('autocomplete', 'off');
+                autocompleteField(usernameField, list);
+            }
 
-        if (passwordField !== undefined) {
-            passwordField.setAttribute('autocomplete', 'off');
-            autocompleteField(passwordField, list);
+            if (passwordField !== undefined) {
+                passwordField.setAttribute('autocomplete', 'off');
+                autocompleteField(passwordField, list);
+            }
         }
     }, 100);
 }
@@ -110,14 +109,14 @@ function processList(data) {
 function spinner() {
     let spinnerHtml = document.createElement('div');
     let pw = passwordField.getBoundingClientRect();
-    let top = pw.height - ( pw.height * 0.9 );
+    let top = pw.height - (pw.height * 0.9);
 
     spinnerHtml.innerHTML = '<div id="syspass-spinner" class="syspass-spinner"></div>';
     spinnerHtml.style.cssText = "position: absolute; z-index: 1000";
-    spinnerHtml.style.top = ( pw.top + top / 2 ) + "px";
-    spinnerHtml.style.left = ( pw.left - pw.height + pw.width ) + "px";
-    spinnerHtml.style.height = ( pw.height * 0.9 ) + "px";
-    spinnerHtml.style.width = ( pw.height * 0.9 ) + "px";
+    spinnerHtml.style.top = (pw.top + top / 2) + "px";
+    spinnerHtml.style.left = (pw.left - pw.height + pw.width) + "px";
+    spinnerHtml.style.height = (pw.height * 0.9) + "px";
+    spinnerHtml.style.width = (pw.height * 0.9) + "px";
 
     document.body.appendChild(spinnerHtml);
 }

@@ -43,10 +43,10 @@ module.exports = {
                             outputPath: './'
                         }
                     },
-                    { loader: 'extract-loader' },
-                    { loader: 'css-loader' },
-                    { loader: 'postcss-loader' },
-                    { loader: 'sass-loader' }
+                    {loader: 'extract-loader'},
+                    {loader: 'css-loader'},
+                    {loader: 'postcss-loader'},
+                    {loader: 'sass-loader'}
                 ]
             }
         ]

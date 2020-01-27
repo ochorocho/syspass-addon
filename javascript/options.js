@@ -46,12 +46,18 @@ function storeSettings() {
         return password.value;
     }
 
+    function getDropdown() {
+        const dropdown = document.querySelector("#dropdown");
+        return dropdown.checked;
+    }
+
     const url = getUrl();
     const token = getToken();
     const password = getPassword();
+    const dropdown = getDropdown();
 
     if (isURL(url) && token !== '' && token !== '') {
-        checkApi(url, token, password);
+        checkApi(url, token, password, dropdown);
     } else {
         message('Oops, could not save preferences', 'error');
     }
@@ -66,13 +72,16 @@ function updateUI(restoredSettings) {
 
     const password = document.querySelector('#password');
     password.value = restoredSettings.password || '';
+
+    const dropdown = document.querySelector('#dropdown');
+    dropdown.checked = restoredSettings.dropdown === true ? true : '';
 }
 
 function onError(e) {
     console.error(e);
 }
 
-function checkApi(url, token, password) {
+function checkApi(url, token, password, dropdown) {
     return fetch(url + '/api.php', {
         method: 'POST',
         headers: {
@@ -93,7 +102,8 @@ function checkApi(url, token, password) {
             browser.storage.local.set({
                 url,
                 token,
-                password
+                password,
+                dropdown
             });
 
             message("Preferences saved.\n SysPass connection established", 'success');
