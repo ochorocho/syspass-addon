@@ -15,12 +15,18 @@ body {
   max-height: 50%;
   overflow-y: auto;
 
-  &__item {
-    @include mode($link: true);
-
+  &__item, &__disabled {
     display: block;
     padding: 5px 20px;
     text-decoration: none;
+    min-width: 200px;
+  }
+  &__item {
+    @include mode($link: true);
+  }
+
+  &__disabled {
+    @include mode($link: false);
   }
 }
 

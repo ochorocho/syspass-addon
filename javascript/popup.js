@@ -11,8 +11,13 @@ gettingStoredSettings.then(function (data) {
     let settingsSearch = Object.assign({"method": 'account/search'}, data);
     settings = data;
 
+    console.log('Storage settings');
+
     currentTab.then((tabs) => {
         let url = new URL(tabs[0].url);
+
+        console.log('in tab');
+
 
         chrome.runtime.sendMessage({
             contentScriptQuery: "accountSearch",
