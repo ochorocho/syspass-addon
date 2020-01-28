@@ -1,10 +1,10 @@
 # sysPass Firefox integration
 
-Integrates sysPass password manager in Firefox
+Integrates sysPass password manager in Firefox/Chrome/Edge Chromium
 
-Addon page: https://addons.mozilla.org/de/firefox/addon/syspass/
+Firefox: https://addons.mozilla.org/de/firefox/addon/syspass/
 
-Works with Firefox, Chrome and Edge Chromium
+Chrome: https://chrome.google.com/webstore/detail/syspass/iekmmiiflmajnlogcmljnpeinnkicdhg?hl=de
 
 ![syspass firefox integration](preview.gif "Logo Title Text 1")
 
