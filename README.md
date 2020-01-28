@@ -24,8 +24,8 @@ In Firefox go to the Addons page (cmd+shift+A / `about:addons`) and edit sysPass
 Clone repository:
 
 ```
-git clone git@github.com:ochorocho/syspass-firefox.git
-cd syspass-firefox
+git clone git@github.com:ochorocho/syspass-addon.git
+cd syspass-addon
 yarn install
 ```
 

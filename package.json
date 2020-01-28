@@ -1,7 +1,7 @@
 {
-  "name": "syspass-firefox",
+  "name": "syspass-addon",
   "version": "1.0.0",
-  "description": "syspass-firefox",
+  "description": "syspass-addon",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node_modules/.bin/webpack && rm -Rf web-ext-artifacts/* && node_modules/.bin/web-ext build --source-dir=dist",
