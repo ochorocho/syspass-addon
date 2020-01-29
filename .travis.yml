@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+  - 12
+
+matrix:
+  fast_finish: true
+
+sudo: false
+
+addons:
+  apt:
+    packages:
+      - parallel
+
+before_install:
+  - yarn global add webpack-cli
+  - yarn --version
+
+before_script:
+  - yarn install
+
+script:
+  - >
+    yarn build
