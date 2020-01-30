@@ -34,6 +34,9 @@
     "postcss-loader": "^3.0.0",
     "postcss-svgo": "^4.0.2",
     "sass-loader": "^8.0.2",
+    "stylelint": "^13.0.0",
+    "stylelint-scss": "^3.14.2",
+    "stylelint-webpack-plugin": "^1.2.1",
     "web-ext": "^4.0.0",
     "webextension-polyfill": "^0.6.0",
     "webpack-concat-plugin": "3.0.0"
