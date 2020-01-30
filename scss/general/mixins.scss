@@ -1,58 +1,53 @@
-@import "variables";
+@import 'variables';
 
 @mixin font {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Ubuntu', 'Helvetica Neue', sans-serif
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Ubuntu', 'Helvetica Neue', sans-serif;
 }
 
 @mixin mode($border: false, $link: false) {
-  background: $lightMenu;
-  color: $lightText;
+  background: $light-menu;
+  color: $light-text;
 
   @if $border {
-    border: 1px solid $lightBorder;
+    border: 1px solid $light-border;
   }
 
   @if $link {
     &:hover {
-      background: $lightMenuHover;
+      background: $light-menu-hover;
     }
   }
 
   @media (prefers-color-scheme: dark) {
-    background: $darkMenu;
-    color: $darkText;
+    background: $dark-menu;
+    color: $dark-text;
 
     @if $border {
-      border: 1px solid $darkBorder;
+      border: 1px solid $dark-border;
     }
 
     @if $link {
       cursor: pointer;
 
       &:hover {
-        background: $darkMenuHover;
+        background: $dark-menu-hover;
       }
     }
   }
 }
 
-@mixin spinner($color: $spinnerColor, $background: $spinnerBackground) {
-  display: inline-block;
-  width: 100%;
-  height: 100%;
+@mixin spinner($color: $spinner-color, $background: $spinner-background) {
+  animation: spin 1s ease-in-out infinite;
   border: 3px solid $background;
   border-radius: 50%;
   border-top-color: $color;
-  animation: spin 1s ease-in-out infinite;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
 
   @keyframes spin {
     to {
-      -webkit-transform: rotate(360deg);
-    }
-  }
-  @-webkit-keyframes spin {
-    to {
-      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
     }
   }
 }

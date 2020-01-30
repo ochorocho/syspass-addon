@@ -1,43 +1,39 @@
-@import "general/variables";
-@import "general/mixins";
+@import 'general/variables';
+@import 'general/mixins';
 
-/**
-
-
-
-asdas
-    Autocomplete
- */
+// Autocomplete
 .syspass-autocomplete {
-    background: white;
-    z-index: 1000;
-    font: 14px/22px "-apple-system", BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    overflow: auto;
-    box-sizing: border-box;
-    border: 1px solid rgba(50, 50, 50, 0.6);
+  background: $white;
+  border: 1px solid $dropdown-border;
+  box-sizing: border-box;
+  font: 14px/22px '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  overflow: auto;
+  z-index: 1000;
 
-    * {
-        font: inherit;
+  * {
+    font: inherit;
+  }
+
+  .group {
+    background: $dropdown-background-group;
+  }
+
+  > div {
+    cursor: pointer;
+    padding: 0 4px;
+
+    &.selected {
+      background: $dropdown-hover-selected;
     }
 
-    & > div {
-        padding: 0 4px;
+    &:hover {
+      &:not(.group) {
+        background: $dropdown-hover;
+      }
     }
-
-    .group {
-        background: #eee;
-    }
-
-    & > div:hover:not(.group), & > div.selected {
-        background: #81ca91;
-        cursor: pointer;
-    }
-
-    & > div:hover:not(.group) {
-        background: rgba(129,202,145,0.5);
-    }
+  }
 }
 
 .syspass-spinner {
-    @include spinner;
+  @include spinner;
 }

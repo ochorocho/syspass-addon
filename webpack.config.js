@@ -1,7 +1,7 @@
 const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
-const StylelintPlugin = require('stylelint-webpack-plugin');
+const SassLintPlugin = require('sass-lint-webpack')
 
 module.exports = {
   mode: 'development',
@@ -23,9 +23,7 @@ module.exports = {
       { from: 'addon', to: './' },
       { from: 'node_modules/webextension-polyfill/dist/browser-polyfill.js', to: './polyfill.js' }
     ]),
-    new StylelintPlugin({
-      configFile: 'stylelint.config.js'
-    })
+    new SassLintPlugin()
   ],
   optimization: {
     minimize: true,
