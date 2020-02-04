@@ -33,10 +33,7 @@ label {
     width: 50%;
 
     &[type='button'] {
-      background: $purple;
-      border: 1px solid $purple;
-      color: $white;
-      font-size: 18px;
+      @include button;
     }
   }
 }

@@ -9,6 +9,10 @@ const currentTab = browser.tabs.query({ currentWindow: true, active: true })
 gettingStoredSettings.then(function (data) {
   const settingsSearch = Object.assign({ method: 'account/search' }, data)
 
+  document.querySelector('#popup-link').addEventListener('click', function () {
+    window.open(data.url, '_blank')
+  })
+
   currentTab.then((tabs) => {
     const url = new URL(tabs[0].url)
 

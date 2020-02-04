@@ -10,6 +10,12 @@ body {
   margin: 0;
 }
 
+.popup-link {
+  @include button;
+
+  margin: 20px 20px 0;
+}
+
 .popup-list {
   max-height: 50%;
   overflow-y: auto;
