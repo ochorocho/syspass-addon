@@ -5,7 +5,8 @@
   "version": "1.5.2",
   "homepage_url": "https://github.com/ochorocho/syspass-addon",
   "icons": {
-    "48": "icons/border-48.png"
+    "48": "icons/icon.svg",
+    "96": "icons/icon.svg"
   },
   "permissions": [
     "storage",
@@ -27,11 +28,11 @@
     }
   ],
   "browser_action": {
-    "default_icon": "icons/border-48.png",
+    "default_icon": "icons/icon-dark.svg",
     "theme_icons": [{
-      "light": "icons/border-48.png",
-      "dark": "icons/border-48.png",
-      "size": 32
+      "light": "icons/icon-light.svg",
+      "dark": "icons/icon-dark.svg",
+      "size": 48
     }],
     "default_title": "sysPass",
     "default_popup": "popup.html"
