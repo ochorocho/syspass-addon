@@ -1,4 +1,7 @@
 import '../scss/options.scss'
+import { Translate } from './translate'
+
+new Translate() // eslint-disable-line no-new
 
 function isURL (str) {
   var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
@@ -97,7 +100,7 @@ function checkApi (url, token, password, dropdown) {
       id: 1
     })
   }).then((resp) => resp.json())
-    .then(function (data) {
+    .then(function () {
       browser.storage.local.set({
         url,
         token,
@@ -108,7 +111,7 @@ function checkApi (url, token, password, dropdown) {
       message('Preferences saved.\n SysPass connection established', 'success')
     })
     .catch(function (e) {
-      message('Could not connect to sysPass', 'error')
+      message('Could not connect to sysPass: ' + e.toString(), 'error')
     })
 }
 

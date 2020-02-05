@@ -3,6 +3,7 @@
   "manifest_version": 2,
   "name": "syspass",
   "version": "1.5.2",
+  "default_locale": "en",
   "homepage_url": "https://github.com/ochorocho/syspass-addon",
   "icons": {
     "48": "icons/icon.svg",
