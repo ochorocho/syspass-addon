@@ -1,6 +1,26 @@
 {
-  "extensionName": {
-    "message": "Notify link clicks i18n",
-    "description": "Name of the extension."
+  "baseUrl": {
+    "message": "SysPass URL",
+    "description": "URL für die SysPass Installation."
+  },
+  "apiToken": {
+    "message": "API Token",
+    "description": "SysPass API Token."
+  },
+  "apiPassword": {
+    "message": "API Passwort",
+    "description": "SysPass API Passwort."
+  },
+  "dropdownDisable": {
+    "message": "Dropdown deaktivieren",
+    "description": "Dropwown für Login-Felder deaktivieren"
+  },
+  "saveButton": {
+    "message": "Einstellungen speichern",
+    "description": "Einstellungen für SysPass Addon speichern."
+  },
+  "noItems": {
+    "message": "Keine Konten gefunden",
+    "description": "Wenn keine Konten in sysPass gefunden werden."
   }
 }

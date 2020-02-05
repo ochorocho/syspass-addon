@@ -7,7 +7,12 @@ class Translate {
   replace () {
     this.i18nList.forEach(function (v) {
       const localeKey = v.getAttribute('data-i18n')
-      v.textContent = browser.i18n.getMessage(localeKey)
+
+      if (v.value) {
+        v.value = browser.i18n.getMessage(localeKey)
+      } else {
+        v.textContent = browser.i18n.getMessage(localeKey)
+      }
     })
   }
 }

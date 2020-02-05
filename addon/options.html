@@ -12,7 +12,8 @@
     <img class="header" src="icons/header.png">
 
     <section class="clear-options">
-      <label class="title">sysPass base URL
+      <label class="title">
+        <span class="" data-i18n="baseUrl">SysPass base URL</span>
         <input type="url" name="url" id="url"
                placeholder="https://example.com"
                pattern="https://.*" size="30"
@@ -21,19 +22,17 @@
     </section>
 
     <section class="clear-options">
-      <label class="title">API token
+      <label class="title">
+        <span class="" data-i18n="apiToken">API token</span>
         <input type="password" name="token" id="token"
                size="30"
                required>
       </label>
     </section>
 
-    <hr>
-    <div class="" data-i18n="extensionName">----</div>
-    <hr>
-
     <section class="clear-options">
-      <label class="title">API password
+      <label class="title">
+        <span class="" data-i18n="apiPassword">API password</span>
         <input type="password" name="password" id="password"
                size="30"
                required>
@@ -41,7 +40,8 @@
     </section>
 
     <section class="clear-options">
-      <div class="title">Disable Dropdown
+      <div class="title">
+        <span class="" data-i18n="dropdownDisable">Disable Dropdown</span>
         <input type="checkbox" name="dropdown" id="dropdown">
         <label for="dropdown"></label>
         <br>
@@ -49,7 +49,7 @@
     </section>
 
     <section class="clear-options">
-      <input class="save" type="button" value="Save preferences" id="save-button"/>
+      <input class="save" type="button" data-i18n="saveButton" value="Save preferences" id="save-button" />
     </section>
 
     <script src="polyfill.js"></script>

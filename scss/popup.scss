@@ -22,11 +22,18 @@ body {
   padding: 10px 0 20px;
 
   &__item,
-  &__disabled {
+  &__disabled,
+  &__notfound {
     display: block;
     min-width: 200px;
     padding: 5px 20px;
     text-decoration: none;
+  }
+
+  &__notfound {
+    @include mode($link: false);
+
+    text-align: center;
   }
 
   &__item {

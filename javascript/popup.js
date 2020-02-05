@@ -1,7 +1,10 @@
 import '../scss/popup.scss'
+import { Translate } from './translate'
 
 const gettingStoredSettings = browser.storage.local.get()
 const currentTab = browser.tabs.query({ currentWindow: true, active: true })
+
+new Translate() // eslint-disable-line no-new
 
 /**
  * Get addon settings
@@ -32,7 +35,6 @@ gettingStoredSettings.then(function (data) {
  */
 function createList (data) {
   const popUpList = document.querySelector('#popup-list')
-  popUpList.innerHTML = ''
 
   data.result.result.forEach(function (item) {
     const link = document.createElement('div')
