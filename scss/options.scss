@@ -35,6 +35,10 @@ label {
     &[type='button'] {
       @include button;
     }
+
+    &[type='checkbox'] {
+      @include checkbox;
+    }
   }
 }
 

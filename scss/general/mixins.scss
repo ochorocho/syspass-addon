@@ -1,5 +1,31 @@
 @import 'variables';
 
+@mixin checkbox {
+  display: none;
+
+  & + label {
+    background-color: $purple;
+    float: right;
+    height: 20px;
+    position: relative;
+    width: 20px;
+  }
+
+  &:checked + label {
+    &::before {
+      background-color: $white;
+      content: '';
+      display: block;
+      float: right;
+      height: 12px;
+      margin: 4px;
+      position: absolute;
+      width: 12px;
+    }
+  }
+
+}
+
 @mixin font {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Ubuntu', 'Helvetica Neue', sans-serif;
 }
