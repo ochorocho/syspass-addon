@@ -22,5 +22,9 @@
   "noItems": {
     "message": "Keine Konten gefunden",
     "description": "Wenn keine Konten in sysPass gefunden werden."
+  },
+  "openExternal": {
+    "message": "SysPass öffnen",
+    "description": "SysPass in einem neuen Browser Fenster öffnen."
   }
 }

@@ -36,6 +36,10 @@ gettingStoredSettings.then(function (data) {
 function createList (data) {
   const popUpList = document.querySelector('#popup-list')
 
+  if (data.result.result.length !== 0) {
+    popUpList.innerHTML = ''
+  }
+
   data.result.result.forEach(function (item) {
     const link = document.createElement('div')
     const login = item.login === '' ? '' : ` ( ${item.login} )`

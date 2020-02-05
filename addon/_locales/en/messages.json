@@ -22,5 +22,9 @@
   "noItems": {
     "message": "No items found",
     "description": "If no items/accounts found in sysPass."
+  },
+  "openExternal": {
+    "message": "Open SysPass",
+    "description": "Open SysPass URL in not browser window."
   }
 }
