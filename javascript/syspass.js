@@ -11,10 +11,13 @@ let passwordField = ''
  */
 gettingStoredSettings.then(function (data) {
   const settingsSearch = Object.assign({ method: 'account/search' }, data)
+  const port = window.location.port !== '' ? ':' + window.location.port : ''
+  const text = window.location.host + port + window.location.pathname
   settings = data
+
   chrome.runtime.sendMessage({
     contentScriptQuery: 'accountSearch',
-    text: window.location.host,
+    text: text,
     settings: settingsSearch
   }, data => selectLogin(data))
 })
