@@ -12,7 +12,7 @@
   "permissions": [
     "storage",
     "*://*/*",
-    "tabs"
+    "activeTab"
   ],
   "options_ui": {
     "page": "options.html"
