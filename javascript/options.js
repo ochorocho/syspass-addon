@@ -61,7 +61,7 @@ function storeSettings () {
   if (isURL(url) && token !== '' && token !== '') {
     checkApi(url, token, password, dropdown)
   } else {
-    message('Oops, could not save preferences', 'error')
+    message(browser.i18n.getMessage('savePreferences'), 'error')
   }
 }
 
@@ -101,13 +101,6 @@ function checkApi (url, token, password, dropdown) {
     })
   }).then((resp) => resp.json())
     .then(function (resp) {
-      browser.storage.local.set({
-        url,
-        token,
-        password,
-        dropdown
-      })
-
       fetch(url + '/api.php', {
         method: 'POST',
         headers: {
@@ -127,15 +120,20 @@ function checkApi (url, token, password, dropdown) {
       })
         .then((resp) => resp.json())
         .then(function (resp) {
-          message('Password verified', 'success')
-        }).catch(function (e) {
-          message('Could not verify password: ' + e.toString(), 'error')
-        })
+          browser.storage.local.set({
+            url,
+            token,
+            password,
+            dropdown
+          })
 
-      message('Preferences saved.\n SysPass connection established', 'success')
+          message(browser.i18n.getMessage('verifiedCredentials'), 'success')
+        }).catch(function (e) {
+          message(browser.i18n.getMessage('notVerifiedPassword') + e.toString(), 'error')
+        })
     })
     .catch(function (e) {
-      message('Could not connect to sysPass: ' + e.toString(), 'error')
+      message(browser.i18n.getMessage('apiKeyFailed'), 'error')
     })
 }
 

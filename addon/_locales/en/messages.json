@@ -26,5 +26,21 @@
   "openExternal": {
     "message": "Open SysPass",
     "description": "Open SysPass URL in not browser window."
+  },
+  "savePreferences": {
+    "message": "Oops, could not save preferences",
+    "description": "Oops, could not save preferences"
+  },
+  "notVerifiedPassword": {
+    "message": "Could not verify password: ",
+    "description": "Could not verify password: "
+  },
+  "verifiedCredentials": {
+    "message": "Credentials successful verified",
+    "description": "Credentials successful verified"
+  },
+  "apiKeyFailed": {
+    "message": "Could not connect to sysPass, check your API key",
+    "description": "Could not connect to sysPass, check your API key"
   }
 }

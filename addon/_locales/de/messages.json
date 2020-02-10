@@ -26,5 +26,21 @@
   "openExternal": {
     "message": "SysPass öffnen",
     "description": "SysPass in einem neuen Browser Fenster öffnen."
+  },
+  "savePreferences": {
+    "message": "Hoppla! Einstellungen konnten nicht gespeichert werden",
+    "description": "Hoppla! Einstellungen konnten nicht gespeichert werden"
+  },
+  "notVerifiedPassword": {
+    "message": "Passwort konnte nicht überprüft werden: ",
+    "description": "Passwort konnte nicht überprüft werden: "
+  },
+  "verifiedCredentials": {
+    "message": "Zugangsdaten erfolgreich überprüft",
+    "description": "Zugangsdaten erfolgreich überprüft"
+  },
+  "apiKeyFailed": {
+    "message": "Verbindung zu sysPass konnte nicht hergestellt werden, prüfen sie den API Key",
+    "description": "Verbindung zu sysPass konnte nicht hergestellt werden, prüfen sie den API Key"
   }
 }
