@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node_modules/.bin/webpack && rm -Rf web-ext-artifacts/* && node_modules/.bin/web-ext build --source-dir=dist",
     "watch": "node_modules/.bin/webpack --watch",
-    "dev": "node_modules/.bin/web-ext run --source-dir=dist & node_modules/.bin/webpack --watch"
+    "dev": "node_modules/.bin/web-ext run --source-dir=dist --verbose & node_modules/.bin/webpack --watch"
   },
   "license": "MPL-2.0",
   "devDependencies": {

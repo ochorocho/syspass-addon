@@ -100,13 +100,37 @@ function checkApi (url, token, password, dropdown) {
       id: 1
     })
   }).then((resp) => resp.json())
-    .then(function () {
+    .then(function (resp) {
       browser.storage.local.set({
         url,
         token,
         password,
         dropdown
       })
+
+      fetch(url + '/api.php', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          jsonrpc: '2.0',
+          method: 'account/viewPass',
+          params: {
+            authToken: token,
+            tokenPass: password,
+            id: resp.result.result[0].id
+          },
+          id: 1
+        })
+      })
+        .then((resp) => resp.json())
+        .then(function (resp) {
+          message('Password verified', 'success')
+        }).catch(function (e) {
+          message('Could not verify password: ' + e.toString(), 'error')
+        })
 
       message('Preferences saved.\n SysPass connection established', 'success')
     })
