@@ -120,14 +120,17 @@ function checkApi (url, token, password, dropdown) {
       })
         .then((resp) => resp.json())
         .then(function (resp) {
-          browser.storage.local.set({
-            url,
-            token,
-            password,
-            dropdown
-          })
-
-          message(browser.i18n.getMessage('verifiedCredentials'), 'success')
+          if (resp.result.error) {
+            message(browser.i18n.getMessage('notVerifiedPassword'), 'error')
+          } else {
+            browser.storage.local.set({
+              url,
+              token,
+              password,
+              dropdown
+            })
+            message(browser.i18n.getMessage('verifiedCredentials'), 'success')
+          }
         }).catch(function (e) {
           message(browser.i18n.getMessage('notVerifiedPassword') + e.toString(), 'error')
         })
