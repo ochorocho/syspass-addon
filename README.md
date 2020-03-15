@@ -6,6 +6,8 @@ Firefox: https://addons.mozilla.org/de/firefox/addon/syspass/
 
 Chrome: https://chrome.google.com/webstore/detail/syspass/iekmmiiflmajnlogcmljnpeinnkicdhg?hl=de
 
+Edge: https://microsoftedge.microsoft.com/addons/detail/abdcbcfgdjehfdbegndlkfjogdlenecl
+
 ![syspass firefox integration](preview.gif "Logo Title Text 1")
 
 ## Configuration
