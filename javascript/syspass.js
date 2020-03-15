@@ -76,15 +76,15 @@ function selectLogin (data) {
     const list = processList(data)
 
     passwordField = document.querySelector('input[type=password]')
-    usernameField = passwordField.closest('form').querySelectorAll('input[type="text"]')[0]
+    usernameField = (typeof (passwordField) !== 'undefined' && passwordField !== null) ? passwordField.closest('form').querySelectorAll('input[type="text"]')[0] : null
 
     if (settings.dropdown !== true) {
-      if (usernameField !== undefined) {
+      if (typeof (usernameField) !== 'undefined' && usernameField != null) {
         usernameField.setAttribute('autocomplete', 'off')
         autocompleteField(usernameField, list)
       }
 
-      if (passwordField !== undefined) {
+      if (typeof (passwordField) !== 'undefined' && passwordField != null) {
         passwordField.setAttribute('autocomplete', 'off')
         autocompleteField(passwordField, list)
       }
