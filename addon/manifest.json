@@ -2,7 +2,8 @@
   "description": "Add sysPass integration",
   "manifest_version": 2,
   "name": "syspass",
-  "version": "1.6.2",
+  "short_name": "sysPass Browser integration",
+  "version": "1.6.3",
   "default_locale": "en",
   "homepage_url": "https://github.com/ochorocho/syspass-addon",
   "icons": {

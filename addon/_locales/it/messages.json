@@ -1,0 +1,46 @@
+{
+  "baseUrl": {
+    "message": "URL di base di SysPass",
+    "description": "URL di base per l'installazione di SysPass."
+  },
+  "apiToken": {
+    "message": "API token",
+    "description": "Token API di SysPass."
+  },
+  "apiPassword": {
+    "message": "API password",
+    "description": "Password per l'API di SysPass."
+  },
+  "dropdownDisable": {
+    "message": "Disabilita di Dropdown",
+    "description": "Disabilita il dropdown per il campo login."
+  },
+  "saveButton": {
+    "message": "Salva le preferenze",
+    "description": "Bottone per salvataggio preferenze"
+  },
+  "noItems": {
+    "message": "Nessua voce trovata",
+    "description": "In caso la voce ricercata non sia presente in SysPass."
+  },
+  "openExternal": {
+    "message": "Lancia SysPass",
+    "description": "Lancia SysPass come programma a sé."
+  },
+  "savePreferences": {
+    "message": "Ops, impossibile salvare le preferenze",
+    "description": "Ops, impossibile salvare le preferenze"
+  },
+  "notVerifiedPassword": {
+    "message": "Non é possibile verificare la password: ",
+    "description": "Non é possibile verificare la password: "
+  },
+  "verifiedCredentials": {
+    "message": "Credenziali verificate con successo",
+    "description": "Credenziali verificate con successo"
+  },
+  "apiKeyFailed": {
+    "message": "Impossibile collegarsi a SysPass, controllare la API Key",
+    "description": "Impossibile collegarsi a SysPass, controllare la API Key"
+  }
+}
