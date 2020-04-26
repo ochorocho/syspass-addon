@@ -76,7 +76,7 @@ function selectLogin (data) {
     const list = processList(data)
 
     passwordField = document.querySelector('input[type=password]')
-    usernameField = (typeof (passwordField) !== 'undefined' && passwordField !== null) ? passwordField.closest('form').querySelectorAll( 'input[type="text"], input[type="email"]' )[0] : null
+    usernameField = (typeof (passwordField) !== 'undefined' && passwordField !== null) ? passwordField.closest('form').querySelectorAll('input[type="text"], input[type="email"]')[0] : null
 
     if (settings.dropdown !== true) {
       if (typeof (usernameField) !== 'undefined' && usernameField != null) {
