@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "syspass",
   "short_name": "sysPass Browser integration",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "default_locale": "en",
   "homepage_url": "https://github.com/ochorocho/syspass-addon",
   "icons": {
