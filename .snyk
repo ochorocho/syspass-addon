@@ -1,0 +1,48 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.14.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-567746:
+    - node-sass > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - sass-lint > globule > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - node-sass > sass-graph > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - sass-lint > eslint > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - web-ext > firefox-profile > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - node-sass > gaze > globule > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - sass-lint > eslint > inquirer > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - sass-lint > eslint > table > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - web-ext > addons-linter > cheerio > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - web-ext > addons-linter > eslint > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - web-ext > firefox-profile > archiver > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - web-ext > firefox-profile > async > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - web-ext > addons-linter > eslint > inquirer > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - web-ext > addons-linter > eslint > table > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - web-ext > addons-linter > eslint-plugin-no-unsafe-innerhtml > eslint > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - web-ext > firefox-profile > archiver > archiver-utils > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - web-ext > firefox-profile > archiver > async > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - web-ext > firefox-profile > archiver > zip-stream > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - web-ext > addons-linter > eslint-plugin-no-unsafe-innerhtml > eslint > inquirer > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - web-ext > addons-linter > eslint-plugin-no-unsafe-innerhtml > eslint > table > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
+    - web-ext > firefox-profile > archiver > zip-stream > archiver-utils > lodash:
+        patched: '2020-04-30T22:32:17.488Z'
