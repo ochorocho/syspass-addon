@@ -31,7 +31,7 @@ cd syspass-addon
 yarn install
 ```
 
-To use [web-ext](https://www.npmjs.com/package/web-ext) to run an instance of Firefox with the addon enabled run the following within the pugins directory:
+To use [web-ext](https://www.npmjs.com/package/web-ext) to run an instance of Firefox with the addon enabled run the following within the plugins directory:
 
 ```
 yarn dev
