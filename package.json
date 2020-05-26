@@ -29,7 +29,7 @@
     "eslint-loader": "^3.0.3",
     "extract-loader": "^3.1.0",
     "file-loader": "^5.0.2",
-    "node-sass": "^4.13.1",
+    "node-sass": "^4.14.1",
     "postcss-inline-svg": "^4.1.0",
     "postcss-loader": "^3.0.0",
     "postcss-svgo": "^4.0.2",
