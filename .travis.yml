@@ -5,8 +5,6 @@ node_js:
 matrix:
   fast_finish: true
 
-sudo: false
-
 addons:
   apt:
     packages:
@@ -29,7 +27,7 @@ deploy:
     secure: $GITHUB_TOKEN
   file:
     - web-ext-artifacts/*
-  skip_cleanup: true
+  cleanup: false
   on:
-    repo: https://github.com/ochorocho/syspass-addon
+    repo: ochorocho/syspass-addon
     tags: true
