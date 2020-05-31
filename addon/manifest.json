@@ -3,12 +3,12 @@
   "manifest_version": 2,
   "name": "syspass",
   "short_name": "sysPass Browser integration",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "default_locale": "en",
   "homepage_url": "https://github.com/ochorocho/syspass-addon",
   "icons": {
-    "48": "icons/icon.svg",
-    "96": "icons/icon.svg"
+    "48": "icons/icon-dark-48.png",
+    "96": "icons/icon-dark-96.png"
   },
   "permissions": [
     "storage",
@@ -30,10 +30,10 @@
     }
   ],
   "browser_action": {
-    "default_icon": "icons/icon-dark.svg",
+    "default_icon": "icons/icon-dark-48.png",
     "theme_icons": [{
-      "light": "icons/icon-light.svg",
-      "dark": "icons/icon-dark.svg",
+      "light": "icons/icon-light-48.png",
+      "dark": "icons/icon-dark-48.png",
       "size": 48
     }],
     "default_title": "sysPass",
