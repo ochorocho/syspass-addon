@@ -1,26 +1,33 @@
 language: node_js
 node_js:
-- 12
+  - 12
+
 matrix:
   fast_finish: true
+
 addons:
   apt:
     packages:
-    - parallel
-before_install:
-- yarn global add webpack-cli
-- yarn --version
-before_script:
-- yarn install
-script:
-- 'yarn build
+      - parallel
 
-  '
+before_install:
+  - yarn global add webpack-cli
+  - yarn --version
+
+before_script:
+  - yarn install
+
+script:
+  - >
+    yarn build
+
 deploy:
   provider: releases
   api_key:
     secure: b0NfYsDhdsZcasnUv/Qg9iBCLWG0zFAXZRMrwu8MpBAx6SUQ6sGiYxRFZDBXYf+7HsiJ3rJlqsC1rL2Go4m8ICnTyj609aQbPdzeSzHjcC/WHH51Jpgrjd7soR5trSoPeJyHJbeOWhuVDkQJDjUoF/sRULtjz21w7QTY76tvldW4UeDu9dQuEtP4AteNMI85pHaDLmHoZ41pMN9VTMqPMmakSBWWUZXd2uUwVP/Hao6oy492xj9mdSXX+BFnUdBHqOByttAK4CDWHJOe/LIkcE6ZtP6VLXjasVSoLifsf/jt0zb9GGOlZFxpCfkWoyMLnSIeqRa9dR6rVnMwtdAQDfzTZAYNvapoAu4US1zEtVaWIK7j8mPEJcEmZ6DdpWCkmmXhe9eimXxDQ+JtM5hM0xt/ahygYsGpJFcsVV0xJh2qy+gAIhoBAyULwI2+C9lBGB9rc5HT2ml6H3EcXvxgoXSgVce8A0yEvMaydGf031XzVkUMllyROkjQlVk7pd9/oZbVtsw+gkH89yUldBXGAOd0YqMmfHaTT1weCZX+j/e5d6rlwWbpZY3u370G6buL4hdLJgdBYlJIujwIyryIEBKhOtzDE8b3ZsgyVLE72oJNiI12oqP//yDGfDN6B40eQKiaP6F6Xc+KxENGkIbndOv5tVDQWOTGwShoEOrIk+g=
-  file: web-ext-artifacts/*
+  file:
+    - web-ext-artifacts/*
+  cleanup: false
   on:
     repo: ochorocho/syspass-addon
-  skip_cleanup: 'true'
+    tags: true
