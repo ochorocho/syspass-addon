@@ -18,10 +18,8 @@ script:
   '
 deploy:
   provider: releases
-  api_key:
-    secure: "Z4pGptblvfrpX6a73m4np0p+bSHCKnyEN1rJaONfoOsmmK3AHf7+kzudG9STICEM6yaMklK+YTwuochJwRjUC9qAKh63MTGx1vJLQA3LXa2oNROsSjSdUrX+xyPyJTS5nk04lmfXV3FJ5+0wBUNlNLKSJCLhQySt522+T0DCvgNKfhT/7WSevIh4HYZ0n/Fq06OoAAbuGLSqUEgYcQyv/Cd0GoBKuGes+Q5JFF78PwvfR8/fBMRPsihguJwmcLHRDop4HUdtLDMKLNvI4Q/gHSX9aURdZZeIKlCiyKwGab7vbQhDapuH/lTFkeeSZ1tt4Vb7fEqdZMi5FoWhJoUbB+CVh4BAm5efdoqg5J/T4eOLzBXnSgj5JklKlFylrJXVom2wWeaIHtqdrt40YirhKCO9cGoIpX4pzeTWBAq4FEc30j+vRfwO+P9z1ERsE/9qO8kUJ+k25mVitm1rNPnvdAWMKKZsxn7qvJ4GtvQtQiUWv+4d3oUMTmPci36KLvpGRZASdHdJ2Bs/Pv8pWBf9nyxZzeuC1DwFMOC5ZWZI738w/7dtYNoyV+ohq3lVQcSNwprz7KGodelrbhPtEQ2gn5T2AkSRIJV3BXu4QUqJ+91+/8hrqIA7IiNRy4HxOKxBKfx7tY84cL23GjF8ockuaFVCw3veW4uwadg4aJHuLc4="
-  file: web-ext-artifacts/syspass-1.6.5.zip
+  api_key: 76d9f19daddfcb68331c4c08b553ae4d463852eb
+  file: 'deploy:'
   on:
     repo: ochorocho/syspass-addon
-    tags: true
-  cleanup: 'false'
+  skip_cleanup: 'true'
