@@ -20,8 +20,7 @@ deploy:
   provider: releases
   api_key:
     secure: M6f019HemyXRwoq7NqfmLVpixLgA2UWP6pKLotM3Mc4tR3NBl5UaRqRvixA3a2OL3BtoqGviXIWJuZIc10mnhX/kq7aUulr6ydjg4lB1InlG6Uar7vVWsctZz1CPT5kDMLmHxwC0cKZUJZTA7guP7ZLJvo0iSwSfED9CJJ2XxmSRcmqvB88Ml7FRmvwpvD7TcNu3BBAXhfdjteNJbRcxOPYDaaa9MhsAeN4GMByZBGyy/ECvsa4l7bdLzX2gCUNhP3J8oF0Uo8hGOkq/c6SRpD6yAk6blgb91cM7JReb2PZMnCWdmbMV1xlOf+xCLVDIxVtIKeNAhuAuswESKaz8eHansEZJ/VBEKpVcap493gEELlqX7k4DH9FaDfQeHQQlXuffcAC4O3M7O76WbPj1VHw6hDUl9CVJv2lh1mM2BvZ3gHN37SCYeFBJ3QfSmX0V+oWcATBn03o2tPZE1uQDg1bdDyoi8DFzuZTLjUGfo21m+4EjRSOBZKprxN00xkfYmbeObMcvLBDCvJJF0/WYg3nomrvO+DHmvtlXkDoYOg7AL/n2N4ik+n88ESPbB3Ivp/OZ3nyYfTtA7JJ+DO8UHJNbIZ5R2i6SmIfG3BQsRWEiHzqK0fySmOt3Av3H/q46q29hnwkOu/QqIFPKoztKuXssExTx3lphHPmMven+EfY=
-  file: web-ext-artifacts/*
+  file: web-ext-artifacts/syspass-1.6.5.zip
   on:
     repo: ochorocho/syspass-addon
-    all_branches: true
   cleanup: 'false'
