@@ -23,4 +23,5 @@ deploy:
   file: web-ext-artifacts/*
   on:
     repo: ochorocho/syspass-addon
-  skip_cleanup: 'true'
+    all_branches: true
+  cleanup: 'false'
