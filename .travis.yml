@@ -21,6 +21,7 @@ deploy:
   api_key:
     secure: M77wEkgmX1rjCL4EU5cqT+3MgHHNy5m/xNmFBM7GkR2ueMR0J8VT9kd0MghYdlb77JAEX0pHJnQfZMF/TMY+K5jzxpSttyO+qExn8QL6d5icUa26Tv8ANXNSd9oGonYSwhM35ex2Ft1TTW69oXfAQpEIFbHu0Gr2jR5DCC4Zyf/dLmuVr2IRp1LrIz+rzB9QnfxzUwlXWT4BDa89Zrxg9YPue74KSR25p2jevM1jVcSjdABccf1LXY9TYmGutIRh9zMNxsQc9dxDDMTmMMPQvrC0pZXCAGiyQ4Tj9ofaucOTYZBG76b/WsbX+JkErv61D0kYs2q57Sdo4X3rgZApv4RJQOHY+q8e8Y8QXvtJ6UfAAp4x/ayzob8ACIrFbjUY0ygQUYO5iukYaJ8gRGvGXI9VIAQ5Vjys2/JkfJB6H3LaSrlp1drD9yc9K3hRft8UJFvSfSJQeNICkws9UjzOKHzqKqnKsC1cB/KOBwfIunv/tlwpzU+TfkFQp1XBjqzehGfF2JiAhDUBssNt6YPQ9EShgSz0/etN/ZvV736Xv/Oop9KDx5bsVoKP5fp/zueMnFQMFXGvyTEqjjQ4DY+aHtZpWffGMVKuLm7zJZgxN7zeOE2WA7SV+MbtkmWuL3S5JSjaFqq1W66EuObEnP3TbMi7m7tOkX5CXnhMA1Fc9Yg=
   file: web-ext-artifacts/*
+  file_glob: true
   on:
     repo: ochorocho/syspass-addon
     tags: true
