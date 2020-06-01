@@ -22,4 +22,5 @@ deploy:
   file: 'deploy:'
   on:
     repo: ochorocho/syspass-addon
-  skip_cleanup: 'true'
+    tags: true
+  cleanup: 'false'
