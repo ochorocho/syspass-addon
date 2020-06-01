@@ -23,4 +23,5 @@ deploy:
   file: web-ext-artifacts/syspass-1.6.5.zip
   on:
     repo: ochorocho/syspass-addon
+    tags: true
   cleanup: 'false'
