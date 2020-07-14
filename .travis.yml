@@ -13,9 +13,7 @@ before_install:
 before_script:
 - yarn install
 script:
-- 'yarn build
-
-  '
+- 'yarn build'
 deploy:
   provider: releases
   api_key:

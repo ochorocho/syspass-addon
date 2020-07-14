@@ -19,10 +19,12 @@ module.exports = {
     ignored: ['dist', 'node_modules']
   },
   plugins: [
-    new CopyWebpackPlugin([
-      { from: 'addon', to: './' },
-      { from: 'node_modules/webextension-polyfill/dist/browser-polyfill.js', to: './polyfill.js' }
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'addon', to: './' },
+        { from: 'node_modules/webextension-polyfill/dist/browser-polyfill.js', to: './polyfill.js' }
+      ]
+    }),
     new SassLintPlugin()
   ],
   optimization: {
