@@ -7346,10 +7346,10 @@ sass-graph@2.2.5:
     scss-tokenizer "^0.2.3"
     yargs "^13.3.2"
 
-sass-lint-webpack@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/sass-lint-webpack/-/sass-lint-webpack-1.0.2.tgz#7c3d8bd8fd557591cfa7411f19c1c56cfd6bf69c"
-  integrity sha512-Kx/H9x7PCEiSTbYVH9zhAS3/xY/MH3E8VmQw/QEbTn8d3ot6fp1NDq+uL6dYZAAFbehqUM3jRoMIsPNIykhGrA==
+sass-lint-webpack@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/sass-lint-webpack/-/sass-lint-webpack-1.0.3.tgz#53d4abb39d01da386793bef6a218e1b0bd4fe10d"
+  integrity sha512-4qsFG12U/saZKRe+mMlUCIAWEfVWl5ftDHxmZwDBsq4jcjuOMswGWl9GqukKR0ZTRtuvXt+WiutJzgayN0D1xQ==
   dependencies:
     chalk "^2.4.2"
 
