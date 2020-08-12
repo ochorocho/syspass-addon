@@ -1,6 +1,6 @@
 {
   "name": "syspass-addon",
-  "version": "1.6.6",
+  "version": "1.6.7",
   "description": "syspass-addon",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
