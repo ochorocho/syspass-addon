@@ -28,7 +28,7 @@
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^4.0.2",
     "extract-loader": "^5.1.0",
-    "file-loader": "^6.0.0",
+    "file-loader": "^6.1.0",
     "node-sass": "^4.13.1",
     "postcss-inline-svg": "^4.1.0",
     "postcss-loader": "^3.0.0",
