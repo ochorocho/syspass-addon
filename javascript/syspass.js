@@ -24,12 +24,15 @@ gettingStoredSettings.then(function (data) {
 
 browser.runtime.onMessage.addListener(request => {
   if (request.command === 'fillOutForm') {
-    usernameField.value = `${request.login}`
-
+    usernameField.setAttribute('value', `${request.login}`)
+    usernameField.dispatchEvent(new Event('change', { bubbles: true }))
+    usernameField.dispatchEvent(new Event('blur', { bubbles: true }))
     spinner()
     const settingsPassword = Object.assign({ method: 'account/viewPass', id: request.id }, settings)
     chrome.runtime.sendMessage({ contentScriptQuery: 'getPassword', settings: settingsPassword }, data => {
-      passwordField.value = data.result.result.password
+      passwordField.setAttribute('value', data.result.result.password)
+      passwordField.dispatchEvent(new Event('change', { bubbles: true }))
+      passwordField.dispatchEvent(new Event('blur', { bubbles: true }))
       document.getElementById('syspass-spinner').remove()
     })
   }
@@ -37,7 +40,6 @@ browser.runtime.onMessage.addListener(request => {
 
 /**
  * Apply autocomplete
- *
  * @param field
  * @param data
  * @returns {*|AutocompleteResult}
@@ -53,11 +55,16 @@ function autocompleteField (field, data) {
       update(suggestions)
     },
     onSelect: function (item) {
-      usernameField.value = item.value
+      usernameField.setAttribute('value', item.value)
+      usernameField.dispatchEvent(new Event('change', { bubbles: true }))
+      usernameField.dispatchEvent(new Event('blur', { bubbles: true }))
+
       spinner()
       const settingsPassword = Object.assign({ method: 'account/viewPass', id: item.id }, settings)
       chrome.runtime.sendMessage({ contentScriptQuery: 'getPassword', settings: settingsPassword }, data => {
-        passwordField.value = data.result.result.password
+        passwordField.setAttribute('value', data.result.result.password)
+        passwordField.dispatchEvent(new Event('change', { bubbles: true }))
+        passwordField.dispatchEvent(new Event('blur', { bubbles: true }))
         document.getElementById('syspass-spinner').remove()
       })
     }
