@@ -28,8 +28,6 @@ browser.runtime.onMessage.addListener(request => {
       usernameField.setAttribute('value', `${request.login}`)
       usernameField.dispatchEvent(new Event('change', { bubbles: true }))
       usernameField.dispatchEvent(new Event('blur', { bubbles: true }))
-    } else {
-      alert('SysPass: Username/Email Field Not Found')
     }
 
     if (typeof (passwordField) !== 'undefined' && passwordField != null) {
@@ -41,8 +39,6 @@ browser.runtime.onMessage.addListener(request => {
         passwordField.dispatchEvent(new Event('blur', { bubbles: true }))
         document.getElementById('syspass-spinner').remove()
       })
-    } else {
-      alert('SysPass: Password Field Not Found')
     }
   }
 })
@@ -68,8 +64,6 @@ function autocompleteField (field, data) {
         usernameField.setAttribute('value', item.value)
         usernameField.dispatchEvent(new Event('change', { bubbles: true }))
         usernameField.dispatchEvent(new Event('blur', { bubbles: true }))
-      } else {
-        alert('SysPass: Username/Email Field Not Found')
       }
 
       if (typeof (passwordField) !== 'undefined' && passwordField != null) {
@@ -81,8 +75,6 @@ function autocompleteField (field, data) {
           passwordField.dispatchEvent(new Event('blur', { bubbles: true }))
           document.getElementById('syspass-spinner').remove()
         })
-      } else {
-        alert('SysPass: Password Field Not Found')
       }
     }
   })
