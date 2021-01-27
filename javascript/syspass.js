@@ -24,17 +24,26 @@ gettingStoredSettings.then(function (data) {
 
 browser.runtime.onMessage.addListener(request => {
   if (request.command === 'fillOutForm') {
-    usernameField.setAttribute('value', `${request.login}`)
-    usernameField.dispatchEvent(new Event('change', { bubbles: true }))
-    usernameField.dispatchEvent(new Event('blur', { bubbles: true }))
-    spinner()
-    const settingsPassword = Object.assign({ method: 'account/viewPass', id: request.id }, settings)
-    chrome.runtime.sendMessage({ contentScriptQuery: 'getPassword', settings: settingsPassword }, data => {
-      passwordField.setAttribute('value', data.result.result.password)
-      passwordField.dispatchEvent(new Event('change', { bubbles: true }))
-      passwordField.dispatchEvent(new Event('blur', { bubbles: true }))
-      document.getElementById('syspass-spinner').remove()
-    })
+    if (typeof (usernameField) !== 'undefined' && usernameField != null) {
+      usernameField.setAttribute('value', `${request.login}`)
+      usernameField.dispatchEvent(new Event('change', { bubbles: true }))
+      usernameField.dispatchEvent(new Event('blur', { bubbles: true }))
+    } else {
+      alert('SysPass: Username/Email Field Not Found')
+    }
+
+    if (typeof (passwordField) !== 'undefined' && passwordField != null) {
+      spinner()
+      const settingsPassword = Object.assign({ method: 'account/viewPass', id: request.id }, settings)
+      chrome.runtime.sendMessage({ contentScriptQuery: 'getPassword', settings: settingsPassword }, data => {
+        passwordField.setAttribute('value', data.result.result.password)
+        passwordField.dispatchEvent(new Event('change', { bubbles: true }))
+        passwordField.dispatchEvent(new Event('blur', { bubbles: true }))
+        document.getElementById('syspass-spinner').remove()
+      })
+    } else {
+      alert('SysPass: Password Field Not Found')
+    }
   }
 })
 
@@ -55,18 +64,26 @@ function autocompleteField (field, data) {
       update(suggestions)
     },
     onSelect: function (item) {
-      usernameField.setAttribute('value', item.value)
-      usernameField.dispatchEvent(new Event('change', { bubbles: true }))
-      usernameField.dispatchEvent(new Event('blur', { bubbles: true }))
+      if (typeof (usernameField) !== 'undefined' && usernameField != null) {
+        usernameField.setAttribute('value', item.value)
+        usernameField.dispatchEvent(new Event('change', { bubbles: true }))
+        usernameField.dispatchEvent(new Event('blur', { bubbles: true }))
+      } else {
+        alert('SysPass: Username/Email Field Not Found')
+      }
 
-      spinner()
-      const settingsPassword = Object.assign({ method: 'account/viewPass', id: item.id }, settings)
-      chrome.runtime.sendMessage({ contentScriptQuery: 'getPassword', settings: settingsPassword }, data => {
-        passwordField.setAttribute('value', data.result.result.password)
-        passwordField.dispatchEvent(new Event('change', { bubbles: true }))
-        passwordField.dispatchEvent(new Event('blur', { bubbles: true }))
-        document.getElementById('syspass-spinner').remove()
-      })
+      if (typeof (passwordField) !== 'undefined' && passwordField != null) {
+        spinner()
+        const settingsPassword = Object.assign({ method: 'account/viewPass', id: item.id }, settings)
+        chrome.runtime.sendMessage({ contentScriptQuery: 'getPassword', settings: settingsPassword }, data => {
+          passwordField.setAttribute('value', data.result.result.password)
+          passwordField.dispatchEvent(new Event('change', { bubbles: true }))
+          passwordField.dispatchEvent(new Event('blur', { bubbles: true }))
+          document.getElementById('syspass-spinner').remove()
+        })
+      } else {
+        alert('SysPass: Password Field Not Found')
+      }
     }
   })
 
@@ -85,15 +102,23 @@ function selectLogin (data) {
     passwordField = document.querySelector('input[type=password]')
     usernameField = (typeof (passwordField) !== 'undefined' && passwordField !== null) ? passwordField.closest('form').querySelectorAll('input[type="text"], input[type="email"]')[0] : null
 
+    if (typeof (usernameField) === 'undefined' && usernameField === null) {
+      usernameField = document.querySelector('input[type=email]')
+    }
+
     if (settings.dropdown !== true) {
       if (typeof (usernameField) !== 'undefined' && usernameField != null) {
         usernameField.setAttribute('autocomplete', 'off')
         autocompleteField(usernameField, list)
+      } else {
+        alert('SysPass: Username/Email Field Not Found')
       }
 
       if (typeof (passwordField) !== 'undefined' && passwordField != null) {
         passwordField.setAttribute('autocomplete', 'off')
         autocompleteField(passwordField, list)
+      } else {
+        alert('SysPass: Password Field Not Found')
       }
     }
   }, 100)
