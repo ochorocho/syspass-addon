@@ -110,15 +110,11 @@ function selectLogin (data) {
       if (typeof (usernameField) !== 'undefined' && usernameField != null) {
         usernameField.setAttribute('autocomplete', 'off')
         autocompleteField(usernameField, list)
-      } else {
-        alert('SysPass: Username/Email Field Not Found')
       }
 
       if (typeof (passwordField) !== 'undefined' && passwordField != null) {
         passwordField.setAttribute('autocomplete', 'off')
         autocompleteField(passwordField, list)
-      } else {
-        alert('SysPass: Password Field Not Found')
       }
     }
   }, 100)
