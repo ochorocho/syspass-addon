@@ -30,7 +30,7 @@
     "extract-loader": "^5.1.0",
     "file-loader": "^6.0.0",
     "node-sass": "^5.0.0",
-    "postcss": "^8.1.10",
+    "postcss": "^8.2.10",
     "postcss-inline-svg": "^5.0.0",
     "postcss-loader": "^4.1.0",
     "postcss-svgo": "^4.0.2",
