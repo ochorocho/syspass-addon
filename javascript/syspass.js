@@ -24,20 +24,27 @@ gettingStoredSettings.then(function (data) {
 
 browser.runtime.onMessage.addListener(request => {
   if (request.command === 'fillOutForm') {
-    usernameField.value = `${request.login}`
+    if (typeof (usernameField) !== 'undefined' && usernameField != null) {
+      usernameField.setAttribute('value', `${request.login}`)
+      usernameField.dispatchEvent(new Event('change', { bubbles: true }))
+      usernameField.dispatchEvent(new Event('blur', { bubbles: true }))
+    }
 
-    spinner()
-    const settingsPassword = Object.assign({ method: 'account/viewPass', id: request.id }, settings)
-    chrome.runtime.sendMessage({ contentScriptQuery: 'getPassword', settings: settingsPassword }, data => {
-      passwordField.value = data.result.result.password
-      document.getElementById('syspass-spinner').remove()
-    })
+    if (typeof (passwordField) !== 'undefined' && passwordField != null) {
+      spinner()
+      const settingsPassword = Object.assign({ method: 'account/viewPass', id: request.id }, settings)
+      chrome.runtime.sendMessage({ contentScriptQuery: 'getPassword', settings: settingsPassword }, data => {
+        passwordField.setAttribute('value', data.result.result.password)
+        passwordField.dispatchEvent(new Event('change', { bubbles: true }))
+        passwordField.dispatchEvent(new Event('blur', { bubbles: true }))
+        document.getElementById('syspass-spinner').remove()
+      })
+    }
   }
 })
 
 /**
  * Apply autocomplete
- *
  * @param field
  * @param data
  * @returns {*|AutocompleteResult}
@@ -53,13 +60,22 @@ function autocompleteField (field, data) {
       update(suggestions)
     },
     onSelect: function (item) {
-      usernameField.value = item.value
-      spinner()
-      const settingsPassword = Object.assign({ method: 'account/viewPass', id: item.id }, settings)
-      chrome.runtime.sendMessage({ contentScriptQuery: 'getPassword', settings: settingsPassword }, data => {
-        passwordField.value = data.result.result.password
-        document.getElementById('syspass-spinner').remove()
-      })
+      if (typeof (usernameField) !== 'undefined' && usernameField != null) {
+        usernameField.setAttribute('value', item.value)
+        usernameField.dispatchEvent(new Event('change', { bubbles: true }))
+        usernameField.dispatchEvent(new Event('blur', { bubbles: true }))
+      }
+
+      if (typeof (passwordField) !== 'undefined' && passwordField != null) {
+        spinner()
+        const settingsPassword = Object.assign({ method: 'account/viewPass', id: item.id }, settings)
+        chrome.runtime.sendMessage({ contentScriptQuery: 'getPassword', settings: settingsPassword }, data => {
+          passwordField.setAttribute('value', data.result.result.password)
+          passwordField.dispatchEvent(new Event('change', { bubbles: true }))
+          passwordField.dispatchEvent(new Event('blur', { bubbles: true }))
+          document.getElementById('syspass-spinner').remove()
+        })
+      }
     }
   })
 
@@ -77,6 +93,10 @@ function selectLogin (data) {
 
     passwordField = document.querySelector('input[type=password]')
     usernameField = (typeof (passwordField) !== 'undefined' && passwordField !== null) ? passwordField.closest('form').querySelectorAll('input[type="text"], input[type="email"]')[0] : null
+
+    if (typeof (usernameField) === 'undefined' && usernameField === null) {
+      usernameField = document.querySelector('input[type=email]')
+    }
 
     if (settings.dropdown !== true) {
       if (typeof (usernameField) !== 'undefined' && usernameField != null) {
